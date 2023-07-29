@@ -1,0 +1,9 @@
+PyMuPDF
+tiktoken
+tenacity
+pybase64
+Pillow
+openai
+markdown
+faiss-cpu
+langchain
