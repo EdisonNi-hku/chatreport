@@ -54,11 +54,11 @@ python app.py --pdf_path NYSE_SNE_2018.pdf --user_question "What is the level of
 ## Citation
 Please cite our paper if you use CHATREPORT in your research.
 ```bibtex
-@misc{ni2023paradigm,
-      title={Paradigm Shift in Sustainability Disclosure Analysis: Empowering Stakeholders with CHATREPORT, a Language Model-Based Tool}, 
+@misc{ni2023chatreport,
+      title={CHATREPORT: Democratizing Sustainability Disclosure Analysis through LLM-based Tools}, 
       author={Jingwei Ni and Julia Bingler and Chiara Colesanti-Senni and Mathias Kraus and Glen Gostlow and Tobias Schimanski and Dominik Stammbach and Saeid Ashraf Vaghefi and Qian Wang and Nicolas Webersinke and Tobias Wekhof and Tingyu Yu and Markus Leippold},
       year={2023},
-      eprint={2306.15518},
+      eprint={2307.15770},
       archivePrefix={arXiv},
       primaryClass={cs.CL}
 }
