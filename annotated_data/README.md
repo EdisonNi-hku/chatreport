@@ -1,3 +1,8 @@
+## Zip files
+- chatgpt_annotation.zip contains the annotations on ChatGPT (June version) outputs about hallucinations on content/source dimensions.
+- gpt-4_annotation.zip contains the annotations on GPT-4 (June version) outputs about hallucinations on content/source dimensions.
+- sustainability_reports.zip contains the 10 sustainability reports that the data based on.
+
 ## Structure of the JSON files:
 ```
 {
