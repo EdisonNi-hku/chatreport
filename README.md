@@ -1,5 +1,6 @@
 # chatreport
 Github implementation of CHATREPORT. This is a snapshot of the v1.0 backend of our [web application](https://reports.chatclimate.ai/) on 2023.07.28.
+We release anonymized user questions and ChatReport answers [here](https://drive.google.com/file/d/1rek6quK6YnxQx5JlRMv91KhMznt-ZFPJ/view?usp=sharing). The cut-off point of user QA is on 11.09.2023.
 
 ## Directories
 - annotated_data: annotation results of our human evaluation
