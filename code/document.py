@@ -17,8 +17,11 @@ import requests
 import configparser
 import os
 
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_dir = os.path.dirname(current_dir)
+apikey_file = os.path.join(project_dir, 'apikey.ini')
 config = configparser.ConfigParser()
-config.read('apikey.ini')
+config.read(apikey_file)
 chat_api_list = config.get('OpenAI', 'OPENAI_API_KEYS')[1:-1].replace('\'', '').split(',')
 os.environ["OPENAI_API_KEY"] = chat_api_list[0]
 
