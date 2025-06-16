@@ -66,9 +66,9 @@ class Report:
         if title == '':
             if self.path:
                 self.pdf = fitz.open(self.path)  # pdf
-                #self.parse_pdf_from_url(self.url)
+                #self.open_pdf_from_url(self.url)
             else:
-                self.parse_pdf_from_url(self.url)  # download from an URL
+                self.open_pdf_from_url(self.url)  # download from an URL
                 #self.pdf = fitz.open(self.path)
             self.title = self.get_title()
             self.parse_pdf()
@@ -80,7 +80,7 @@ class Report:
         self.digit_num = [str(d + 1) for d in range(10)]
         self.first_image = ''
 
-    def parse_pdf_from_url(self, url):
+    def open_pdf_from_url(self, url):
         response = requests.get(url)
         pdf = io.BytesIO(response.content)
         self.pdf = fitz.open(stream=pdf)
@@ -89,7 +89,7 @@ class Report:
         if self.path:
             self.pdf = fitz.open(self.path)  # pdf
         else:
-            self.parse_pdf_from_url(self.url) # download from an URL
+            self.open_pdf_from_url(self.url) # download from an URL
         self.text_list = [page.get_text() for page in self.pdf]
         self.all_text = ' '.join(self.text_list)
         # self.section_page_dict = self._get_all_page_index() # paragraph and page map
@@ -274,6 +274,10 @@ class Report:
 
     # _get_retriever load/store database from/to self.db_path
     def _get_retriever(self, db_path):
+        if self.path:
+            self.pdf = fitz.open(self.path)  # pdf
+        else:
+            self.open_pdf_from_url(self.url) # download from an URL
         embeddings = OpenAIEmbeddings()
         text_splitter = RecursiveCharacterTextSplitter(
             # split by ["\n\n", "\n", " "].
@@ -289,7 +293,7 @@ class Report:
             self.page_idx.extend([i + 1] * len(page_chunks))
             self.chunks.extend(page_chunks)
         if os.path.exists(db_path):
-            doc_search = FAISS.load_local(db_path, embeddings=embeddings)
+            doc_search = FAISS.load_local(db_path, embeddings=embeddings, allow_dangerous_deserialization=True)
         else:
             doc_search = FAISS.from_texts(self.chunks, embeddings,
                                           metadatas=[{"source": str(i), "page": str(page_idx)} for i, page_idx in
